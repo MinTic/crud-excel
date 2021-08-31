@@ -2,7 +2,7 @@ import random
 from openpyxl import load_workbook
 from datetime import datetime, timedelta
 from colors import bcolors
-from util import route
+from util import printWord, route
 
 def read(route: str):
     file = load_workbook(route)
@@ -138,3 +138,16 @@ def updateTask():
 
     print(bcolors.FAIL + "\nLa tarea con esta ID no existe!" + bcolors.ENDC)
     updateTask()
+
+def show():
+    list = ""
+    data = read(route)
+    for i in data:
+        title = "\n" + bcolors.OKCYAN + bcolors.BOLD + f"Tarea {i}" + bcolors.ENDC
+        list += title + f"""
+        \nNombre: {data[i]["task_name"]}\nDescripcion: {data[i]["description"]}\nEstado: {data[i]["status"]}\nFecha inicio: {data[i]["start_date"]}\nFecha fin: {data[i]["end_date"]}
+        """
+
+    print("\n\n")
+    printWord("Tareas")
+    print(list)
