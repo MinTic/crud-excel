@@ -1,4 +1,4 @@
-from actions import addTask, removeTask, read, updateTask
+from actions import addTask, removeTask, read, updateTask, show
 from colors import bcolors
 from util import route, actions, printWord
 
@@ -17,6 +17,8 @@ def dialogue():
         removeTask()
     elif todo == "3":
         updateTask()
+    elif todo == "4":
+        show()
     elif todo == "exit":
         end = True
     else:
